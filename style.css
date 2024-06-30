@@ -1,0 +1,287 @@
+/*اضافة الخلفية المتلونة المتحركة */
+body {
+    margin: auto;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: auto;
+    background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
+    animation: gradient 15s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.wave {
+    background: rgb(255 255 255 / 25%);
+    border-radius: 1000% 1000% 0 0;
+    position: fixed;
+    width: 200%;
+    height: 12em;
+    animation: wave 10s -3s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: wave 18s linear reverse infinite;
+    opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: wave 20s -1s reverse infinite;
+    opacity: 0.9;
+}
+
+@keyframes wave {
+    2% {
+        transform: translateX(1);
+    }
+
+    25% {
+        transform: translateX(-25%);
+    }
+
+    50% {
+        transform: translateX(-50%);
+    }
+
+    75% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(1);
+    }
+}
+/*هذه هي نهاية الخلفية المتحركة */
+/*هون عنا خصائص الكونتينر */
+.container{
+    width: 100%;
+    margin: auto;
+    max-width: 90vw;
+    text-align: center;
+    padding-top: 10px;
+    transition: transform .5s;
+    /*mne*/
+    display: flex;
+    flex-wrap: wrap;
+}
+
+svg{
+    width: 30px;
+}
+/*تنسيق جملة اسم المتجر */
+h6{
+    font-size:100px ;
+    letter-spacing: 5px;
+    text-align: center;
+    background: linear-gradient(to right ,#00ffff 0%,#ff00c3 100%);
+    background-clip: text;
+    color: transparent;
+    padding: 0;
+    border-radius: 1cm;
+    margin: auto;
+}
+/*تنسيق جملة شرح المتجر */
+h3{
+    font-size:50px ;
+    background: linear-gradient(to right ,#640005 0%,#2e66ff 100%);
+    background-clip: text;
+    color: transparent;
+        margin: auto;
+
+}
+/*خصائص اسم قائمة المنتجات */
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+/*موقع أيقونة سلة المشتريات */
+.icon-cart{
+position: relative;
+right: -900px;    
+
+}
+/*خصائص عدد المشتريات المختارة الموجودة بالسلة */
+.icon-cart span{
+    position: absolute;
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: #fff;
+    top: 50%;
+    right: -20px;
+}
+/*خصائص جملة لائحة المشتريات وتنسيقها */
+.title{
+    background: linear-gradient(to right ,#640005 0%,#2e66ff 100%);
+    background-clip: text;
+    color: transparent;
+    margin: auto;
+    font-size: xx-large;
+}
+/*خصائص صور المنتجات */
+.listProduct .item img{
+    max-width: 90%;
+    min-width: 10%;
+    filter: drop-shadow(0  50px 20px #0009);
+}
+/*التباعد بين صور المنتجات */
+.listProduct{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+/*الخانة الموجود بها صورة المنتج وزر الشراء والسعر*/
+.listProduct .item{
+    background-color: #EEEEE6;
+    padding: 10px;
+    border-radius: 10px;
+}
+/*خصائص اسم المنتج*/
+.listProduct .item h2{
+    font-weight: 500;
+    font-size: large;
+    background: linear-gradient(to right ,#640005 0%,#2e66ff 100%);
+    background-clip: text;
+    color: transparent;
+    margin: auto;
+    font-size: xx-large;
+    
+}
+/*تنسيق سعر المنتج */
+.listProduct .item .price{
+    letter-spacing: 4px;
+    font-size: small;
+}
+/*خصائص تنسيق زر إضافة إلى سلة التسوق  */
+.listProduct .item button{
+    background-color: #353432;
+    color: #eee;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border-radius: 20px;
+    
+}
+
+/* خصائص وتنسيق سلة المشتريات  */
+.cartTab{
+    width: 400px;
+    background-color: #353432;
+    color: #eee;
+    position: fixed;
+    top: 0;
+    right: -400px;
+    bottom: 0;
+    display: grid;
+    grid-template-rows: 70px 1fr 70px;
+    transition: .5s;
+}
+/*المسافة المبتعدة الخاصة بقائمة سلة المشتريات عن الجهة اليمنى من الشاشة */
+body.showCart .cartTab{
+    right: 0;
+}
+/*تأثير الحركة الخاص بسلة المشتريات */
+body.showCart .container{
+    transform: translateX(-100px);
+}
+/* ننسيق كلمة لائحة المنتجات الموجودة في سلة المنتجات */
+.cartTab h1{
+    padding: 20px;
+    margin: 0;
+    font-weight: 300;
+}
+.cartTab .btn{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+/*خصائص زر التأكد الموجود في قائمة المنتجات */
+.cartTab button{
+    background-color: #E8BC0E;
+    border: none;
+    font-family: Poppins;
+    font-weight: 500;
+    cursor: pointer;
+}
+/*خصائص زر الإغلاق الموجود في السلة */
+.cartTab .close{
+    background-color: #eee;
+}
+/*حجم صورة المنتج الموجود في السلة */
+.listCart .item img{
+    width: 100%;
+}
+/*خصائص تنسيق المنتجات الموجودة في السلة */
+.listCart .item{
+    display: grid;
+    grid-template-columns: 70px 150px 50px 1fr;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+    max-width: fit-content;
+}
+/*خصائص زر زيادة ونقصان المنتجات المشتراة*/
+.listCart .quantity span{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+    color: #555;
+    cursor: pointer;
+}
+/*خصائص وتنسيق عدد القطع المشتراة من كل صنف */
+.listCart .quantity span:nth-child(2){
+    background-color: transparent;
+    color: #eee;
+    cursor: auto;
+}
+/*خصائص وتنسيق لون خلفية المنتجات ذو الأرقام الزوجية بالسلة */
+.listCart .item:nth-child(even){
+    background-color: #eee1;
+}
+
+.listCart{
+    overflow: auto;
+}
+
+.listCart::-webkit-scrollbar{
+    width: 0;
+}
+/*هنا لدينا خصائص عرض الشاشة في حال ا
+لمتجر مفتوح من أجهزة ذو مقاسات مختلفة مثل الحاسوب ايباد كمبيترإلخ*/
+@media only screen and (max-width: 992px) {
+    .listProduct{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+/* mobile */
+@media only screen and (max-width: 768px) {
+    .listProduct{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
